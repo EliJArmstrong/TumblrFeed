@@ -17,12 +17,18 @@ class PhotosViewController: UIViewController, UITableViewDataSource, UITableView
     // variables
     var posts: [[String: Any]] = []
     let refreshControl = UIRefreshControl()
+    let alertController = UIAlertController(title: "Title", message: "Message", preferredStyle: .alert)
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         tableView.delegate = self
         tableView.dataSource = self
+        
+        let tryAgain = UIAlertAction(title: "Try Again", style: .default) { (action) in
+            self.fetchPhotos()
+        }
+        self.alertController.addAction(tryAgain)
         
         refreshControl.addTarget(self, action: #selector(refreshControlAction(_:)), for: UIControlEvents.valueChanged)
         tableView.insertSubview(refreshControl, at: 0)
@@ -45,7 +51,14 @@ class PhotosViewController: UIViewController, UITableViewDataSource, UITableView
             let originalSize = photo["original_size"] as! [String: Any]
             let urlString = originalSize["url"] as! String
             let url = URL(string: urlString)
-            cell.PhotoImg.af_setImage(withURL: url!)
+            
+            let placeholderImage = UIImage(named: "placeholder")!
+            let filter = AspectScaledToFillSizeWithRoundedCornersFilter(
+                size: cell.PhotoImg.frame.size,
+                radius: 20.0
+            )
+            
+            cell.PhotoImg.af_setImage(withURL: url!, placeholderImage: placeholderImage, filter: filter, imageTransition: .crossDissolve(0.2))
         }
         
         return cell
@@ -59,6 +72,9 @@ class PhotosViewController: UIViewController, UITableViewDataSource, UITableView
         
         let task = session.dataTask(with: url) { (data, response, error) in
             if let error = error {
+                self.alertController.title = "Cannot Get Photos"
+                self.alertController.message = error.localizedDescription
+                self.present(self.alertController, animated: true){}
                 print(error.localizedDescription)
             } else if let data = data,
                 let dataDictionary = try! JSONSerialization.jsonObject(with: data, options: []) as? [String: Any] {
