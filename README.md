@@ -12,10 +12,10 @@ The following **required** user stories are complete:
 
 The following **stretch** user stories are implemented:
 
-- [ ] User sees an alert when there's a networking error (+1pt)
-- [ ] While poster is being fetched, user see's a placeholder image (+1pt)
-- [ ] User sees image transition for images coming from network, not when it is loaded from cache (+1pt)
-- [ ] Customize the selection effect of the cell (+1pt)
+- [x] User sees an alert when there's a networking error (+1pt)
+- [x] While poster is being fetched, user see's a placeholder image (+1pt)
+- [x] User sees image transition for images coming from network, not when it is loaded from cache (+1pt)
+- [x] Customize the selection effect of the cell (+1pt)
 
 The following **additional** user stories are implemented:
 
@@ -30,7 +30,7 @@ Please list two areas of the assignment you'd like to **discuss further with you
 
 Here's a walkthrough of implemented user stories:
 
-<img src='https://i.imgur.com/j40zK9o.gif' title='Video Walkthrough' width='300' alt='Video Walkthrough' />
+<img src='https://i.imgur.com/JVwffOn.gif' title='Video Walkthrough' width='300' alt='Video Walkthrough' />
 
 GIF created with [LiceCap](http://www.cockos.com/licecap/).
 
