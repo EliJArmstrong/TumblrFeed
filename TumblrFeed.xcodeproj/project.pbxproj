@@ -9,11 +9,12 @@
 /* Begin PBXBuildFile section */
 		25828AD1C81F1F440E63D506 /* Pods_TumblrFeed.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0ED19E9C3F2018F493EEB952 /* Pods_TumblrFeed.framework */; };
 		B70678F3213C2A430063320E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B70678F2213C2A430063320E /* AppDelegate.swift */; };
-		B70678F5213C2A430063320E /* PhotosViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B70678F4213C2A430063320E /* PhotosViewController.swift */; };
+		B70678F5213C2A430063320E /* PhotosVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B70678F4213C2A430063320E /* PhotosVC.swift */; };
 		B70678F8213C2A430063320E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B70678F6213C2A430063320E /* Main.storyboard */; };
 		B70678FA213C2A440063320E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B70678F9213C2A440063320E /* Assets.xcassets */; };
 		B70678FD213C2A440063320E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B70678FB213C2A440063320E /* LaunchScreen.storyboard */; };
 		B7067905213C32C40063320E /* PhotoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7067904213C32C30063320E /* PhotoCell.swift */; };
+		B713CFAC21617B63006DDB06 /* PhotoDetailsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B713CFAB21617B63006DDB06 /* PhotoDetailsVC.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,12 +23,13 @@
 		6E0BB386573108FF4A5DD0AA /* Pods-TumblrFeed.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TumblrFeed.release.xcconfig"; path = "Pods/Target Support Files/Pods-TumblrFeed/Pods-TumblrFeed.release.xcconfig"; sourceTree = "<group>"; };
 		B70678EF213C2A430063320E /* TumblrFeed.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TumblrFeed.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B70678F2213C2A430063320E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		B70678F4213C2A430063320E /* PhotosViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotosViewController.swift; sourceTree = "<group>"; };
+		B70678F4213C2A430063320E /* PhotosVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotosVC.swift; sourceTree = "<group>"; };
 		B70678F7213C2A430063320E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		B70678F9213C2A440063320E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B70678FC213C2A440063320E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		B70678FE213C2A440063320E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B7067904213C32C30063320E /* PhotoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoCell.swift; sourceTree = "<group>"; };
+		B713CFAB21617B63006DDB06 /* PhotoDetailsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoDetailsVC.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -80,15 +82,40 @@
 		B70678F1213C2A430063320E /* TumblrFeed */ = {
 			isa = PBXGroup;
 			children = (
+				B713CFA5216177F6006DDB06 /* Controller */,
+				B713CFA4216177E1006DDB06 /* Models */,
+				B713CFA3216177A1006DDB06 /* Views */,
 				B70678F2213C2A430063320E /* AppDelegate.swift */,
-				B70678F4213C2A430063320E /* PhotosViewController.swift */,
 				B70678F6213C2A430063320E /* Main.storyboard */,
 				B70678F9213C2A440063320E /* Assets.xcassets */,
 				B70678FB213C2A440063320E /* LaunchScreen.storyboard */,
 				B70678FE213C2A440063320E /* Info.plist */,
-				B7067904213C32C30063320E /* PhotoCell.swift */,
 			);
 			path = TumblrFeed;
+			sourceTree = "<group>";
+		};
+		B713CFA3216177A1006DDB06 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				B7067904213C32C30063320E /* PhotoCell.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		B713CFA4216177E1006DDB06 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		B713CFA5216177F6006DDB06 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				B70678F4213C2A430063320E /* PhotosVC.swift */,
+				B713CFAB21617B63006DDB06 /* PhotoDetailsVC.swift */,
+			);
+			path = Controller;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -125,6 +152,7 @@
 				TargetAttributes = {
 					B70678EE213C2A430063320E = {
 						CreatedOnToolsVersion = 9.4.1;
+						LastSwiftMigration = 1000;
 					};
 				};
 			};
@@ -205,7 +233,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B70678F5213C2A430063320E /* PhotosViewController.swift in Sources */,
+				B713CFAC21617B63006DDB06 /* PhotoDetailsVC.swift in Sources */,
+				B70678F5213C2A430063320E /* PhotosVC.swift in Sources */,
 				B7067905213C32C40063320E /* PhotoCell.swift in Sources */,
 				B70678F3213C2A430063320E /* AppDelegate.swift in Sources */,
 			);
@@ -361,7 +390,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = core.TumblrFeed;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -380,7 +409,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = core.TumblrFeed;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
