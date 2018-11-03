@@ -1,7 +1,7 @@
 # Lab 1 - TumblrFeed
 
 # **NOTE**
-# The code here is from week two's implantation of the Tumblr project. This just has a recreated readme for week one.
+# The code here is from week two's implantation of the Tumblr project. This has a recreated readme for week one.
 
 TumblrFeed is a photo browsing app using the [The Tumblr API](https://www.tumblr.com/docs/en/api/v2#posts).
 
