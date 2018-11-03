@@ -1,4 +1,6 @@
-# Lab 1 - TumberFeed
+# Lab 1 - TumblrFeed
+
+# **NOTE** Code is from week two implmation of the tumblr project I just reused the readme. **NOTE**
 
 TumblrFeed is a photo browsing app using the [The Tumblr API](https://www.tumblr.com/docs/en/api/v2#posts).
 
