@@ -29,12 +29,6 @@ import Foundation
 
 import UIKit
 
-#if swift(>=4.2)
-public typealias ControlState = UIControl.State
-#else
-public typealias ControlState = UIControl.State
-#endif
-
 extension UIButton {
 
     // MARK: - Private - AssociatedKeys
@@ -131,7 +125,7 @@ extension UIButton {
     ///                               the image was returned from the image cache, the response will be `nil`. Defaults
     ///                               to `nil`.
     public func af_setImage(
-        for state: ControlState,
+        for state: UIControlState,
         url: URL,
         placeholderImage: UIImage? = nil,
         filter: ImageFilter? = nil,
@@ -170,7 +164,7 @@ extension UIButton {
     ///                               the image was returned from the image cache, the response will be `nil`. Defaults
     ///                               to `nil`.
     public func af_setImage(
-        for state: ControlState,
+        for state: UIControlState,
         urlRequest: URLRequestConvertible,
         placeholderImage: UIImage? = nil,
         filter: ImageFilter? = nil,
@@ -247,7 +241,7 @@ extension UIButton {
     }
 
     /// Cancels the active download request for the image, if one exists.
-    public func af_cancelImageRequest(for state: ControlState) {
+    public func af_cancelImageRequest(for state: UIControlState) {
         guard let receipt = imageRequestReceipt(for: state) else { return }
 
         let imageDownloader = af_imageDownloader ?? UIButton.af_sharedImageDownloader
@@ -278,7 +272,7 @@ extension UIButton {
     ///                               the image was returned from the image cache, the response will be `nil`. Defaults
     ///                               to `nil`.
     public func af_setBackgroundImage(
-        for state: ControlState,
+        for state: UIControlState,
         url: URL,
         placeholderImage: UIImage? = nil,
         filter: ImageFilter? = nil,
@@ -317,7 +311,7 @@ extension UIButton {
     ///                               the image was returned from the image cache, the response will be `nil`. Defaults
     ///                               to `nil`.
     public func af_setBackgroundImage(
-        for state: ControlState,
+        for state: UIControlState,
         urlRequest: URLRequestConvertible,
         placeholderImage: UIImage? = nil,
         filter: ImageFilter? = nil,
@@ -394,7 +388,7 @@ extension UIButton {
     }
 
     /// Cancels the active download request for the background image, if one exists.
-    public func af_cancelBackgroundImageRequest(for state: ControlState) {
+    public func af_cancelBackgroundImageRequest(for state: UIControlState) {
         guard let receipt = backgroundImageRequestReceipt(for: state) else { return }
 
         let imageDownloader = af_imageDownloader ?? UIButton.af_sharedImageDownloader
@@ -405,12 +399,12 @@ extension UIButton {
 
     // MARK: - Internal - Image Request Receipts
 
-    func imageRequestReceipt(for state: ControlState) -> RequestReceipt? {
+    func imageRequestReceipt(for state: UIControlState) -> RequestReceipt? {
         guard let receipt = imageRequestReceipts[state.rawValue] else { return nil }
         return receipt
     }
 
-    func setImageRequestReceipt(_ receipt: RequestReceipt?, for state: ControlState) {
+    func setImageRequestReceipt(_ receipt: RequestReceipt?, for state: UIControlState) {
         var receipts = imageRequestReceipts
         receipts[state.rawValue] = receipt
 
@@ -419,12 +413,12 @@ extension UIButton {
 
     // MARK: - Internal - Background Image Request Receipts
 
-    func backgroundImageRequestReceipt(for state: ControlState) -> RequestReceipt? {
+    func backgroundImageRequestReceipt(for state: UIControlState) -> RequestReceipt? {
         guard let receipt = backgroundImageRequestReceipts[state.rawValue] else { return nil }
         return receipt
     }
 
-    func setBackgroundImageRequestReceipt(_ receipt: RequestReceipt?, for state: ControlState) {
+    func setBackgroundImageRequestReceipt(_ receipt: RequestReceipt?, for state: UIControlState) {
         var receipts = backgroundImageRequestReceipts
         receipts[state.rawValue] = receipt
 
@@ -435,7 +429,7 @@ extension UIButton {
 
     private func isImageURLRequest(
         _ urlRequest: URLRequestConvertible?,
-        equalToActiveRequestURLForState state: ControlState)
+        equalToActiveRequestURLForState state: UIControlState)
         -> Bool
     {
         if
@@ -451,7 +445,7 @@ extension UIButton {
 
     private func isBackgroundImageURLRequest(
         _ urlRequest: URLRequestConvertible?,
-        equalToActiveRequestURLForState state: ControlState)
+        equalToActiveRequestURLForState state: UIControlState)
         -> Bool
     {
         if

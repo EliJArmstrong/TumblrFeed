@@ -112,11 +112,11 @@ open class AutoPurgingImageCache: ImageRequestCache {
     }
 
     /// The total memory capacity of the cache in bytes.
-    public let memoryCapacity: UInt64
+    open let memoryCapacity: UInt64
 
     /// The preferred memory usage after purge in bytes. During a purge, images will be purged until the memory
     /// capacity drops below this limit.
-    public let preferredMemoryUsageAfterPurge: UInt64
+    open let preferredMemoryUsageAfterPurge: UInt64
 
     private let synchronizationQueue: DispatchQueue
     private var cachedImages: [String: CachedImage]
@@ -151,17 +151,12 @@ open class AutoPurgingImageCache: ImageRequestCache {
         }()
 
         #if os(iOS) || os(tvOS)
-        #if swift(>=4.2)
-        let notification = UIApplication.didReceiveMemoryWarningNotification
-        #else
-        let notification = UIApplication.didReceiveMemoryWarningNotification
-        #endif
-        NotificationCenter.default.addObserver(
-            self,
-            selector: #selector(AutoPurgingImageCache.removeAllImages),
-            name: notification,
-            object: nil
-        )
+            NotificationCenter.default.addObserver(
+                self,
+                selector: #selector(AutoPurgingImageCache.removeAllImages),
+                name: Notification.Name.UIApplicationDidReceiveMemoryWarning,
+                object: nil
+            )
         #endif
     }
 

@@ -29,12 +29,6 @@ import Foundation
 
 import UIKit
 
-#if swift(>=4.2)
-public typealias AnimationOptions = UIView.AnimationOptions
-#else
-public typealias AnimationOptions = UIView.AnimationOptions
-#endif
-
 extension UIImageView {
 
     // MARK: - ImageTransition
@@ -51,7 +45,7 @@ extension UIImageView {
         case flipFromTop(TimeInterval)
         case custom(
             duration: TimeInterval,
-            animationOptions: UIView.AnimationOptions,
+            animationOptions: UIViewAnimationOptions,
             animations: (UIImageView, Image) -> Void,
             completion: ((Bool) -> Void)?
         )
@@ -81,10 +75,10 @@ extension UIImageView {
         }
 
         /// The animation options of the image transition.
-        public var animationOptions: UIView.AnimationOptions {
+        public var animationOptions: UIViewAnimationOptions {
             switch self {
             case .noTransition:
-                return []
+                return UIViewAnimationOptions()
             case .crossDissolve:
                 return .transitionCrossDissolve
             case .curlDown:

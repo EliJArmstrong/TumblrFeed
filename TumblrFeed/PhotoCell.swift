@@ -9,14 +9,14 @@
 import UIKit
 
 class PhotoCell: UITableViewCell {
-    
-    @IBOutlet weak var photoImg: UIImageView!
+
+    @IBOutlet weak var PhotoImg: UIImageView!
     
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
     }
-    
+
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
         
@@ -26,5 +26,5 @@ class PhotoCell: UITableViewCell {
         backgroundView.backgroundColor = UIColor.black
         self.selectedBackgroundView = backgroundView
     }
-    
+
 }
