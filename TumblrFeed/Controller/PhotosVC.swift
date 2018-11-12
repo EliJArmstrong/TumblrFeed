@@ -15,7 +15,7 @@ class PhotosVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
     @IBOutlet weak var tableView: UITableView!
     
     // Variables
-    var posts: [[String: Any]] = []
+    var posts = [[String : Any]]()
     let refreshControl = UIRefreshControl()
     let alertController = UIAlertController(title: "Title", message: "Message", preferredStyle: .alert)
     
@@ -66,7 +66,7 @@ class PhotosVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
         
         // Add a UILabel for the date here
         // Use the section number to get the right URL
-        let label = UILabel(frame: CGRect(x: 50, y: 10, width: 320, height: 50))
+        let label = UILabel(frame: CGRect(x: 50, y: 0, width: 320, height: 50))
         label.textColor = UIColor(white: 1, alpha: 1)
         let post = posts[section]
         let date = Date(timeIntervalSince1970: (post["timestamp"] as! Double))

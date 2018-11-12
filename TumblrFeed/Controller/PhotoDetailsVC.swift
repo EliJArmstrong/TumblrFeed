@@ -7,19 +7,41 @@
 //
 
 import UIKit
+import Alamofire
 import AlamofireImage
 
 class PhotoDetailsVC: UIViewController {
     
     public var url: URL?
     @IBOutlet weak var detailsImg: UIImageView!
+    var passImg : UIImage!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         let placeholderImage = UIImage(named: "placeholder")!
         
         detailsImg.af_setImage(withURL: url!, placeholderImage: placeholderImage, imageTransition: .crossDissolve(0.2))
+        
+        let pinched = UIPinchGestureRecognizer(target: self, action: #selector(pinchedImg(_:)))
+        detailsImg.addGestureRecognizer(pinched)
+        
+        Alamofire.request(url!).response { (response) in
+            if response.error == nil{
+                if let data = response.data{
+                    self.passImg = UIImage(data: data)
+                }
+            }
+        }
         // Do any additional setup after loading the view.
+    }
+    
+    @IBAction func pinchedImg(_ sender: UIPinchGestureRecognizer) {
+        performSegue(withIdentifier: "ToZoom", sender: nil)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let vc = segue.destination as! ZoomVC
+        vc.image = passImg
     }
     
     
