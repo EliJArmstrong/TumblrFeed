@@ -17,7 +17,6 @@ class PhotosVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
     // Variables
     var posts = [[String : Any]]()
     let refreshControl = UIRefreshControl()
-    let alertController = UIAlertController(title: "Title", message: "Message", preferredStyle: .alert)
     
     
     
@@ -28,12 +27,16 @@ class PhotosVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
         tableView.delegate = self
         tableView.dataSource = self
         
+<<<<<<< HEAD:TumblrFeed/Controller/PhotosVC.swift
         let tryAgain = UIAlertAction(title: "Try Again", style: .default) { (action) in
             self.fetchPhotos()
         }
         self.alertController.addAction(tryAgain)
         
         refreshControl.addTarget(self, action: #selector(refreshControlAction(_:)), for: UIControl.Event.valueChanged)
+=======
+        refreshControl.addTarget(self, action: #selector(refreshControlAction(_:)), for: UIControlEvents.valueChanged)
+>>>>>>> parent of f12a29c... added stretch goals:TumblrFeed/PhotosViewController.swift
         tableView.insertSubview(refreshControl, at: 0)
         
         fetchPhotos()
@@ -99,6 +102,7 @@ class PhotosVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
             let originalSize = photo["original_size"] as! [String: Any]
             let urlString = originalSize["url"] as! String
             let url = URL(string: urlString)
+<<<<<<< HEAD:TumblrFeed/Controller/PhotosVC.swift
             
             let placeholderImage = UIImage(named: "placeholder")!
             let filter = AspectScaledToFillSizeWithRoundedCornersFilter(
@@ -107,6 +111,9 @@ class PhotosVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
             )
             
             cell.photoImg.af_setImage(withURL: url!, placeholderImage: placeholderImage, filter: filter, imageTransition: .crossDissolve(0.2))
+=======
+            cell.PhotoImg.af_setImage(withURL: url!)
+>>>>>>> parent of f12a29c... added stretch goals:TumblrFeed/PhotosViewController.swift
         }
         
         return cell
@@ -126,9 +133,6 @@ class PhotosVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
         
         let task = session.dataTask(with: url) { (data, response, error) in
             if let error = error {
-                self.alertController.title = "Cannot Get Photos"
-                self.alertController.message = error.localizedDescription
-                self.present(self.alertController, animated: true){}
                 print(error.localizedDescription)
             } else if let data = data,
                 let dataDictionary = try! JSONSerialization.jsonObject(with: data, options: []) as? [String: Any] {
