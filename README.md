@@ -23,7 +23,7 @@ Here's a walkthrough of implemented user stories:
 
 <img src='https://i.imgur.com/7W5Gsk8.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
 <img src='https://i.imgur.com/MsEqdS9.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
-<img src='https://i.imgur.com/Bqb6hmq.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
+<img src='https://i.imgur.com/VTsDeC9.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
 
 GIF created with [LiceCap](http://www.cockos.com/licecap/).
 
@@ -65,7 +65,7 @@ The following **stretch** user stories are implemented:
 
 - [x] Add Avatar and Publish Dates (+2pt)
 - [x] Zoomable Photo View (+2pt)
-- [ ] Infinite Scrolling (+2pt)
+- [x] Infinite Scrolling (+2pt)
 
 ## Video Walkthrough
 
@@ -74,6 +74,7 @@ Here's a walkthrough of implemented user stories:
 
 <img src='https://i.imgur.com/bRaUAIy.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
 <img src='https://i.imgur.com/VMBN2Ow.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
+
 
 GIF created with [LiceCap](http://www.cockos.com/licecap/).
 
