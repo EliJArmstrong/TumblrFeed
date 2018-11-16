@@ -218,6 +218,7 @@ class PhotosVC: UIViewController, UITableViewDataSource, UITableViewDelegate, UI
     
     @objc func refreshControlAction(_ refreshControl: UIRefreshControl) {
         fetchPhotos()
+        offset = 20
         self.refreshControl.endRefreshing()
     }
     
