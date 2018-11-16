@@ -9,15 +9,17 @@
 import UIKit
 import AlamofireImage
 
-class PhotosVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
+class PhotosVC: UIViewController, UITableViewDataSource, UITableViewDelegate, UIScrollViewDelegate {
     
     // Outlets
     @IBOutlet weak var tableView: UITableView!
     
     // Variables
+    var offset = 20
     var posts = [[String : Any]]()
     let refreshControl = UIRefreshControl()
     let alertController = UIAlertController(title: "Title", message: "Message", preferredStyle: .alert)
+    var isMoreDataLoading = false
     
     
     
@@ -79,8 +81,6 @@ class PhotosVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
         label.textColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
         
         headerView.addSubview(label)
-        
-        
         
         return headerView
     }
@@ -144,6 +144,61 @@ class PhotosVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
         }
         task.resume()
     }
+    
+    func loadMoreData() {
+        
+        let url = URL(string: "https://api.tumblr.com/v2/blog/humansofnewyork.tumblr.com/posts/photo?api_key=Q6vHoaVm5L1u2ZAW1fqv3Jw48gFzYVg9P0vH0VHl3GVy6quoGV&offset=\(offset)")!
+        
+        // Configure session so that completion handler is executed on main UI thread
+        let session = URLSession(configuration: URLSessionConfiguration.default,
+                                 delegate:nil,
+                                 delegateQueue:OperationQueue.main
+        )
+        
+        let task : URLSessionDataTask = session.dataTask(with: url, completionHandler: { (data, response, error) in
+            
+            // ... Use the new data to update the data source ...
+            if let error = error {
+                self.alertController.title = "Cannot Get Photos"
+                self.alertController.message = error.localizedDescription
+                self.present(self.alertController, animated: true){}
+                print(error.localizedDescription)
+            } else if let data = data,
+                let dataDictionary = try! JSONSerialization.jsonObject(with: data, options: []) as? [String: Any] {
+                //print(dataDictionary)
+                
+                // Get the dictionary from the response key
+                let responseDictionary = dataDictionary["response"] as! [String: Any]
+                // Store the returned array of dictionaries in our posts property
+                self.posts += responseDictionary["posts"] as! [[String: Any]]
+                
+                self.tableView.reloadData()
+                // Update flag
+                self.isMoreDataLoading = false
+                self.offset += 20;
+            }
+        })
+        task.resume()
+    }
+    
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        if (!isMoreDataLoading) {
+            // Calculate the position of one screen length before the bottom of the results
+            let scrollViewContentHeight = tableView.contentSize.height
+            let scrollOffsetThreshold = scrollViewContentHeight - tableView.bounds.size.height
+            
+            // When the user has scrolled past the threshold, start requesting
+            if(scrollView.contentOffset.y > scrollOffsetThreshold && tableView.isDragging) {
+                
+                isMoreDataLoading = true
+                
+                // Code to load more results
+                loadMoreData()
+            }
+        }
+    }
+    
+    
     
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

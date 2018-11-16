@@ -13,6 +13,7 @@ import AlamofireImage
 class PhotoDetailsVC: UIViewController {
     
     public var url: URL?
+    
     @IBOutlet weak var detailsImg: UIImageView!
     var passImg : UIImage!
     
