@@ -23,7 +23,6 @@ Here's a walkthrough of implemented user stories:
 
 <img src='https://i.imgur.com/7W5Gsk8.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
 <img src='https://i.imgur.com/MsEqdS9.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
-<img src='https://i.imgur.com/VTsDeC9.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
 
 GIF created with [LiceCap](http://www.cockos.com/licecap/).
 
@@ -74,6 +73,7 @@ Here's a walkthrough of implemented user stories:
 
 <img src='https://i.imgur.com/bRaUAIy.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
 <img src='https://i.imgur.com/VMBN2Ow.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
+<img src='https://i.imgur.com/8tTi7HK.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
 
 
 GIF created with [LiceCap](http://www.cockos.com/licecap/).
